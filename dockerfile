@@ -20,11 +20,11 @@ RUN chown -R dmdba:dinstall /opt/dmdbms
 
 # COPY ./DMInstall.bin /mnt/DMInstall.bin
 COPY ./DMInstall.bin /tmp/
-COPY ./dm_install.conf /mnt/dm_install.conf
+COPY ./dm_install.xml /mnt/dm_install.xml
 
 # 安装达梦（使用dmdba用户）
 RUN chown -R dmdba:dinstall /mnt
-RUN /tmp/DMInstall.bin -q /mnt/dm_install.conf && \
+RUN /tmp/DMInstall.bin -q /mnt/dm_install.xml && \
     rm -rf /tmp
 RUN rm -rf /mnt
 
